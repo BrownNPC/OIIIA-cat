@@ -1,0 +1,42 @@
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"os"
+)
+
+type Config struct {
+	Size  int
+	Speed float64
+}
+
+func DefaultConfig() Config {
+	return Config{
+		Size:  72,
+		Speed: 2.0,
+	}
+}
+
+// Creates a default config on disk or loads an existing one if it exists.
+func LoadConfig(path string) Config {
+	cfgBytes, err := os.ReadFile(path)
+	if err != nil {
+		// File does not exist
+		cfgBytes, err = json.Marshal(DefaultConfig())
+		if err != nil {
+			panic("Failed to marshall default config: " + err.Error())
+		}
+		if err := os.WriteFile(path, cfgBytes, 0o666); err != nil {
+			panic("failed to write default config: " + err.Error())
+		}
+		return DefaultConfig()
+	}
+	config := new(Config)
+	if err := json.Unmarshal(cfgBytes, config); err != nil {
+		fmt.Println("Failed to read config file:", err)
+		fmt.Println("Delete the file or fix it", path)
+		os.Exit(1)
+	}
+	return *config
+}

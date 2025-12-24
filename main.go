@@ -58,7 +58,7 @@ func main() {
 	ebiten.SetWindowFloating(true)
 	ebiten.SetWindowMousePassthrough(true)
 	ebiten.SetWindowSize(Width, Height)
-	ebiten.SetWindowTitle("Neko")
+	ebiten.SetWindowTitle("Spin Cat")
 
 	if err := ebiten.RunGameWithOptions(&game, &ebiten.RunGameOptions{
 		ScreenTransparent: true,
