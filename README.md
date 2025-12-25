@@ -1,0 +1,34 @@
+# Spin Cat
+
+
+### An annoying little desktop pet
+
+ Spin cat follows your cursor around and makes an annoying sound.
+
+
+![spincat](./spin.gif)
+
+Perfect for installing on your school computer. (not legal advice)
+
+## Install
+
+### From Source (deps needed on Linux and Mac OS, see [Building](#building))
+```
+go install github.com/BrownNPC/spincat@latest
+```
+
+## Building
+
+### Windows:
+> No C compiler needed.
+```
+go build .
+```
+
+### Linux/MacOS
+
+> [⚠️ C compiler & Dependencies must be installed.](https://ebitengine.org/en/documents/install.html#Installing_dependencies)
+
+```
+go build .
+```
