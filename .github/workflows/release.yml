@@ -3,11 +3,14 @@
 
 name: Go
 
+permissions:
+  contents: write
+
+
 on:
   push:
     tags:
       - "*"
-
 jobs:
   release:
     strategy:
